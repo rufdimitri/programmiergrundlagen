@@ -1,26 +1,22 @@
-package leetcode.twoSum_1;
+package rd.leetcode.twoSum_1;
 
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class Solution2_HashMapX2 {
+public class Solution3_HashMapX1 {
 
 	public static int[] twoSum(int[] nums, int target) {
 		HashMap<Integer, Integer> map = new HashMap<>();
-		// HashMap fill:
-		for (int i = 0; i < nums.length; i++) {
-			map.put(nums[i], i);
-		}
-
-		// Find complement:
+		// HashMap fill and find complement:
 		for (int i = 0; i < nums.length; i++) {
 			int complement = target - nums[i];
 			if (map.containsKey(complement)) {
 				int complIndex = map.get(complement);
 				if (complIndex != i) {
-					return new int[] { i, complIndex };
+					return new int[] { complIndex, i };
 				}
 			}
+			map.put(nums[i], i);
 		}
 		return new int[] {};
 	}
